@@ -22,7 +22,7 @@ def stopMotors():
     right_motor.setVelocity(0)
     return
 def delay(time):
-        for _ in range(time* 1000 / timestep)):  # Convert `timePerOneBlock` to ms
+        for _ in range(time* 1000 / timestep):  # Convert `timePerOneBlock` to ms
         robot.step(timestep)
         return
 
