@@ -1,79 +1,259 @@
-from controller import Robot
+#VRML_SIM R2023b utf8
 
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
 
-def allglobal():
-    global tstep, errorsum, lasterror, kp, kd, ki, base_angular_V, wheelRadius, trackWidth
-    errorsum = 0
-    lasterror = 0
-    kp = 0.5  # Proportional gain
-    kd = 0.1  # Derivative gain
-    ki = 0.05  # Integral gain
-    base_angular_V = 6.28  # rad/s
-    wheelRadius = 0.0205  # meters
-    trackWidth = 0.053  # Distance between the robot's wheels in meters
-
-
-def delay(time):
-    for _ in range(int(time * 1000 / tstep)):  # Convert time to steps
-        robot.step(tstep)
-
-
-def enableEncoders():
-    left_encoder.enable(tstep)
-    right_encoder.enable(tstep)
-
-
-def disableEncoders():
-    left_encoder.disable()
-    right_encoder.disable()
-
-
-def resetEncoders():
-    left_encoder.getValue()  # Clear the encoder values
-    right_encoder.getValue()
-
-
-def moveForward(distance):
-    """
-    Moves the robot forward for the given distance (in meters).
-    """
-    enableEncoders()
-    resetEncoders()
-
-    target_rotation = distance / wheelRadius  # Target rotation in radians
-    while True:
-        enL = left_encoder.getValue()
-        enR = right_encoder.getValue()
-
-        if enL >= target_rotation and enR >= target_rotation:
-            break
-
-        left_motor.setVelocity(base_angular_V)
-        right_motor.setVelocity(base_angular_V)
-        print(f"Encoders (Forward): Left={enL}, Right={enR}")
-
-    left_motor.setVelocity(0)
-    right_motor.setVelocity(0)
-    disableEncoders()
-
-if __name__ == "__main__":
-    allglobal()
-
-    robot = Robot()
-    tstep = int(robot.getBasicTimeStep())
-
-    # Access motors and encoders
-    left_motor = robot.getDevice('left wheel motor')
-    right_motor = robot.getDevice('right wheel motor')
-    
-    left_motor.setPosition(float('inf'))  # Velocity control mode
-    right_motor.setPosition(float('inf'))
-
-    left_encoder = robot.getDevice('left wheel sensor')
-    right_encoder = robot.getDevice('right wheel sensor')
-
-    # Move forward 0.25 meters
-    print("Hellow")
-    moveForward(0.25)
-
-
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5506635475652795 0.5661151931813108 0.6134193063737955 2.012328084239891
+  position 0.02217841451841229 -0.7855865841408498 6.275306447585246
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 2.5 2.5
+}
+Wall {
+  translation -1 1.125 0
+  name "1"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation -0.5 -1.125 0
+  name "1(1)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation -0.25 -0.875 0
+  name "1(3)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation 0.75 -0.875 0
+  name "1(4)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation 1 -0.875 0
+  name "1(5)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation -0.25 -0.875 0
+  name "1(6)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation -0.25 0.875 0
+  name "1(7)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation 0.25 0.125 0
+  name "1(8)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation 1.125 0.75 0
+  rotation 0 0 1 1.5708003061004252
+  name "1(9)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation 1.125 0.5 0
+  rotation 0 0 1 1.5708003061004252
+  name "1(10)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation 1.125 -0.75 0
+  rotation 0 0 1 1.5708003061004252
+  name "1(11)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation 0.875 1 0
+  rotation 0 0 1 1.5708003061004252
+  name "1(12)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation 0.375 0.25 0
+  rotation 0 0 1 1.5708003061004252
+  name "1(13)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation 0.125 0.75 0
+  rotation 0 0 1 1.5708003061004252
+  name "1(14)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation -0.625 -0.25 0
+  rotation 0 0 1 1.5708003061004252
+  name "1(15)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation -0.875 0.25 0
+  rotation 0 0 1 1.5708003061004252
+  name "1(16)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation -0.875 0.75 0
+  rotation 0 0 1 1.5708003061004252
+  name "1(17)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation -1.125 -1 0
+  rotation 0 0 1 1.5708003061004252
+  name "1(18)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation -1.125 -0.5 0
+  rotation 0 0 1 1.5708003061004252
+  name "1(19)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation 0.5 -1.125 0
+  name "1(20)"
+  size 0.01 0.25 0.1
+}
+Wall {
+  translation -0.75 0.75 0
+  name "2"
+  size 0.01 0.5 0.1
+}
+Wall {
+  translation 0 0.5 0
+  name "2(1)"
+  size 0.01 0.5 0.1
+}
+Wall {
+  translation 0 -1 0
+  name "2(2)"
+  size 0.01 0.5 0.1
+}
+Wall {
+  translation 0.5 1 0
+  name "2(3)"
+  size 0.01 0.5 0.1
+}
+Wall {
+  translation 0.5 -0.25 0
+  name "2(4)"
+  size 0.01 0.5 0.1
+}
+Wall {
+  translation 1 0 0
+  name "2(5)"
+  size 0.01 0.5 0.1
+}
+Wall {
+  translation 1 -0.25 0
+  rotation 0 0 1 1.5707996938995747
+  name "2(6)"
+  size 0.01 0.5 0.1
+}
+Wall {
+  translation 0.75 -0.5 0
+  rotation 0 0 1 1.5707996938995747
+  name "2(7)"
+  size 0.01 0.5 0.1
+}
+Wall {
+  translation 0.5 -0.75 0
+  rotation 0 0 1 1.5707996938995747
+  name "2(8)"
+  size 0.01 0.5 0.1
+}
+Wall {
+  translation 0.25 -0.25 0
+  rotation 0 0 1 1.5707996938995747
+  name "2(9)"
+  size 0.01 0.5 0.1
+}
+Wall {
+  rotation 0 0 1 1.5707996938995747
+  name "2(10)"
+  size 0.01 0.5 0.1
+}
+Wall {
+  translation -0.25 -0.125 0
+  name "3"
+  size 0.01 0.75 0.1
+}
+Wall {
+  translation -0.125 -0.5 0
+  rotation 0 0 1 -1.5708003061004252
+  name "3(1)"
+  size 0.01 0.75 0.1
+}
+Wall {
+  translation -0.75 -0.5 0
+  name "4"
+  size 0.01 1 0.1
+}
+Wall {
+  translation -0.5 0.25 0
+  name "4(1)"
+  size 0.01 1 0.1
+}
+Wall {
+  translation 0.25 -0.75 0
+  name "4(2)"
+  size 0.01 1 0.1
+}
+Wall {
+  translation 0.75 0.5 0
+  name "4(3)"
+  size 0.01 1 0.1
+}
+Wall {
+  translation -0.5 -0.75 0
+  rotation 0 0 1 1.5707996938995747
+  name "4(3)"
+  size 0.01 1 0.1
+}
+Wall {
+  translation -0.25 1 0
+  rotation 0 0 1 1.5708003061004252
+  name "4(4)"
+  size 0.01 1 0.1
+}
+Wall {
+  translation -1 0.125 0
+  name "5"
+  size 0.01 1.25 0.1
+}
+Wall {
+  translation 0.125 0.5 0
+  rotation 0 0 1 1.5707996938995747
+  name "5(1)"
+  size 0.01 1.25 0.1
+}
+E-puck {
+  hidden position_0_0 17842.18998050332
+  hidden position_0_1 20440.988636373604
+  hidden linearVelocity_0 -0.023005983252724342 0.01866789364409292 -2.4329119972319064e-06
+  hidden angularVelocity_0 8.834196406432142e-05 -7.643136481999484e-06 0.4001889271159583
+  hidden rotation_1 0 -1 0 2.056291886704755
+  hidden linearVelocity_1 -0.014931277949346934 0.012085969099617686 1.5291102281183178e-07
+  hidden angularVelocity_1 -0.5724413652707139 -0.7076543416060361 0.401619833174803
+  hidden rotation_2 0 -1 0 4.496353188770302
+  hidden linearVelocity_2 -0.031066091866108116 0.02523321716192775 -1.925509675225814e-08
+  hidden angularVelocity_2 -1.2927727723240043 -1.5912872790265413 0.4032116043965657
+  translation 0.3018846488610761 0.2027050146367796 -6.490822409800298e-05
+  rotation -0.0006643013596629259 0.0002871190196919487 0.9999997381331518 2.4674311316315243
+}
