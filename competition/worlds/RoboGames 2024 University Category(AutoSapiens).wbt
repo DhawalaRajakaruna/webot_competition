@@ -5,12 +5,13 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Roughcast.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.5506635475652795 0.5661151931813108 0.6134193063737955 2.012328084239891
-  position 0.02217841451841229 -0.7855865841408498 6.275306447585246
+  orientation 0.4877351409156414 -0.558320569367126 -0.6711129369469551 4.405760118320112
+  position -0.0823115690622649 -1.2729503720934003 2.7489140801430025
 }
 TexturedBackground {
 }
@@ -244,16 +245,76 @@ Wall {
   size 0.01 1.25 0.1
 }
 E-puck {
-  hidden position_0_0 17842.18998050332
-  hidden position_0_1 20440.988636373604
-  hidden linearVelocity_0 -0.023005983252724342 0.01866789364409292 -2.4329119972319064e-06
-  hidden angularVelocity_0 8.834196406432142e-05 -7.643136481999484e-06 0.4001889271159583
-  hidden rotation_1 0 -1 0 2.056291886704755
-  hidden linearVelocity_1 -0.014931277949346934 0.012085969099617686 1.5291102281183178e-07
-  hidden angularVelocity_1 -0.5724413652707139 -0.7076543416060361 0.401619833174803
-  hidden rotation_2 0 -1 0 4.496353188770302
-  hidden linearVelocity_2 -0.031066091866108116 0.02523321716192775 -1.925509675225814e-08
-  hidden angularVelocity_2 -1.2927727723240043 -1.5912872790265413 0.4032116043965657
-  translation 0.3018846488610761 0.2027050146367796 -6.490822409800298e-05
-  rotation -0.0006643013596629259 0.0002871190196919487 0.9999997381331518 2.4674311316315243
+  hidden position_0_0 21567.49200086954
+  hidden position_0_1 26768.420734863408
+  hidden linearVelocity_0 -0.027268793798024504 0.04871546429299535 1.199090124256242e-07
+  hidden angularVelocity_0 0.0016370268276212018 0.0008999538750887248 0.09116383160010522
+  hidden rotation_1 0 1 0 3.6000266292
+  hidden linearVelocity_1 -0.026105806990376228 0.04663893304304655 5.87938102698238e-09
+  hidden angularVelocity_1 -2.322110898384194 -1.2998568557456271 0.09290603615091317
+  hidden rotation_2 0 1 0 2.0513262783697512
+  hidden linearVelocity_2 -0.028422061585481405 0.050776269862935965 -8.310560997066506e-09
+  hidden angularVelocity_2 -2.5485421559203916 -1.4264767015555009 0.09317780210769405
+  translation 0.41405467792378625 -0.07427271020443851 -6.432282326548043e-05
+  rotation -0.0004757380173565096 0.0002011434516074778 -0.9999998666073165 -2.0827705401223895
+}
+Wall {
+  translation -1.125 -0.495 0
+  rotation 0 0 1 1.5707996938995747
+  name "green"
+  size 0.01 0.1 0.1
+  appearance Roughcast {
+    colorOverride 0 1 0
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+Wall {
+  translation 0.055 -1.25 0
+  rotation 0 0 1 1.5707996938995747
+  name "yellow"
+  size 0.01 0.1 0.1
+  appearance Roughcast {
+    colorOverride 1 1 0
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+Wall {
+  translation 0.95 -0.255 0
+  rotation 0 0 1 1.5707996938995747
+  name "brown"
+  size 0.01 0.1 0.1
+  appearance Roughcast {
+    colorOverride 0.647059 0.411765 0.117647
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+Wall {
+  translation 0.55 -0.49 0
+  rotation 0 0 1 1.5707996938995747
+  name "pink"
+  size 0.01 0.1 0.1
+  appearance Roughcast {
+    colorOverride 1 0 1
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+Wall {
+  translation 0.7 0.495 0
+  rotation 0 0 1 1.5707996938995747
+  name "red"
+  size 0.01 0.1 0.1
+  appearance Roughcast {
+    colorOverride 1 0 0
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
 }
