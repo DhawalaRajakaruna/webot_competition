@@ -108,13 +108,51 @@ def turnLeft():
     disableEncoders()
     
 def moveforward(distance):
-    linear_velocity = base_angular_V * wheelRadius 
-    time_required = distance / linear_velocity 
-    left_motor.setVelocity(base_angular_V)
-    right_motor.setVelocity(base_angular_V)
-    delay(time_required + 0.1)
+    mulnum=distance/0.5
+    global initenL, initenR, enL, enR, lasterror, errorsum
+    enableEncoders()
+    delay(0.1) 
+    # Initialize variables
+    initenL = left_encoder.getValue()
+    initenR = right_encoder.getValue()
+    enL = 0
+    enR = 0
+    lasterror = 0
+    errorsum = 0
+    while True:
+        print("hellow")
+        encoderPID(0)  # Perform PID correction
+        if abs(enL) >= 11.20*mulnum and abs(enR) >= 11.20*mulnum:  # Encoder thresholds for turning
+            break
+        delay(0.1)#error here
+    delay(0.2*mulnum)
     left_motor.setVelocity(0)
     right_motor.setVelocity(0)
+    disableEncoders()
+
+def turnBack(directFrom):
+    #if directFrom = 1 turn from right if directFrom = 2 turn from right
+    global initenL, initenR, enL, enR, lasterror, errorsum
+    enableEncoders()
+    delay(0.1) 
+
+    # Initialize variables
+    initenL = left_encoder.getValue()
+    initenR = right_encoder.getValue()
+    enL = 0
+    enR = 0
+    lasterror = 0
+    errorsum = 0
+
+    while True:
+        print("hellow")
+        encoderPID(directFrom)  # Perform PID correction
+        if abs(enL) >= 26.40704 and abs(enR) >= 26.40704:  # Encoder thresholds for turning
+            break
+        delay(0.1)#error here
+    left_motor.setVelocity(0)
+    right_motor.setVelocity(0)
+    disableEncoders()    
 # Main Execution
 if __name__ == "__main__":
     robot = Robot()
@@ -134,7 +172,5 @@ if __name__ == "__main__":
     right_motor.setVelocity(0) 
 
     # Perform a right turn
-    moveforward(1)
-    turnLeft()
-    moveforward(1)
-    turnRight()   
+    moveforward(0.5) 
+    turnBack(1)
