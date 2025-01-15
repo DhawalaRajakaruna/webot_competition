@@ -3,15 +3,15 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "../protos/E-puck.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Roughcast.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.4877351409156414 -0.558320569367126 -0.6711129369469551 4.405760118320112
-  position -0.0823115690622649 -1.2729503720934003 2.7489140801430025
+  orientation 0.0541285619357942 0.9965789886968993 -0.06245332713817899 1.6355729813958662
+  position 1.1778809801237176 -0.619671114887701 2.24495910778531
 }
 TexturedBackground {
 }
@@ -19,6 +19,24 @@ TexturedBackgroundLight {
 }
 RectangleArena {
   floorSize 2.5 2.5
+}
+E-puck {
+  hidden position_0_0 344.83537704403795
+  hidden position_0_1 231.64150595123738
+  hidden linearVelocity_0 -0.002919858113159819 0.01879884315781991 2.8637767835489445e-05
+  hidden angularVelocity_0 0.000391172483066198 0.0015834997860800651 -0.13781543445927738
+  hidden translation_1 0 0.02599999999999935 0.02
+  hidden rotation_1 0 0.9999999999999999 0 5.543370456340285
+  hidden linearVelocity_1 -0.0032924406546722008 0.023059183677473033 -3.805409906605734e-05
+  hidden angularVelocity_1 -6.193682357945509 -1.0333939213306451 -0.17375898315753843
+  hidden translation_2 0 -0.025999999999999936 0.02
+  hidden rotation_2 0 0.9999999999999999 0 5.446834892772264
+  hidden linearVelocity_2 -0.002643543325496928 0.015138109368998665 -6.853682883267776e-06
+  hidden angularVelocity_2 -0.7736108595367143 -0.12934899696748461 -0.1400490355780853
+  translation 0.9293887002987239 0.49071684443132496 -0.00010348897508380243
+  rotation -0.0007507041478086151 -0.0008524161573039192 0.9999993549147805 1.7322893277910443
+  name "e-puck(1)"
+  controller "my_controller"
 }
 Wall {
   translation -1 1.125 0
@@ -243,20 +261,6 @@ Wall {
   rotation 0 0 1 1.5707996938995747
   name "5(1)"
   size 0.01 1.25 0.1
-}
-E-puck {
-  hidden position_0_0 21567.49200086954
-  hidden position_0_1 26768.420734863408
-  hidden linearVelocity_0 -0.027268793798024504 0.04871546429299535 1.199090124256242e-07
-  hidden angularVelocity_0 0.0016370268276212018 0.0008999538750887248 0.09116383160010522
-  hidden rotation_1 0 1 0 3.6000266292
-  hidden linearVelocity_1 -0.026105806990376228 0.04663893304304655 5.87938102698238e-09
-  hidden angularVelocity_1 -2.322110898384194 -1.2998568557456271 0.09290603615091317
-  hidden rotation_2 0 1 0 2.0513262783697512
-  hidden linearVelocity_2 -0.028422061585481405 0.050776269862935965 -8.310560997066506e-09
-  hidden angularVelocity_2 -2.5485421559203916 -1.4264767015555009 0.09317780210769405
-  translation 0.41405467792378625 -0.07427271020443851 -6.432282326548043e-05
-  rotation -0.0004757380173565096 0.0002011434516074778 -0.9999998666073165 -2.0827705401223895
 }
 Wall {
   translation -1.125 -0.495 0
