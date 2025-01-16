@@ -1,0 +1,55 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.09509649686063913 -0.057498443173493535 -0.9938061105253173 4.223706678323888
+  position 1.089044207588035 -1.4347337823475748 0.5122199655924337
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 2.5 2.5
+}
+Robot {
+  translation 0 0 -0.010309326934047715
+  rotation -0.46985895503902486 -0.06958583462757688 0.8799945306584689 1.638518647763841e-17
+  children [
+    DEF Body Pose {
+      translation 0.25 0.25 0.06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.1
+            radius 0.05
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+          name "motor_1"
+        }
+      ]
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+  linearVelocity 1.925774537027668e-17 8.359742292405931e-18 8.897521205491621e-06
+  angularVelocity 1.6111753968232018e-17 3.0649586145373586e-16 -2.3343312364758323e-18
+}
