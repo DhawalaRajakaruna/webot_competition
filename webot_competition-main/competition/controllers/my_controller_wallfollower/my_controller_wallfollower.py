@@ -15,14 +15,14 @@ tstep = int(robot.getBasicTimeStep()) # Time step for Webots controller (ms)
 
 #colors
 
-red = np.array([0,0,255])
+red = np.array([35,35,180])
 yellow = np.array([0,255,255])
 green = np.array([0,255,0])
 pink = np.array([255,0,255])
-brown = np.array([30,105,165])
+brown = np.array([50,110,165])
 color_order = [red,yellow,pink,brown,green]
 colors = ["red","yellow","pink","brown","green"]
-tolerence = 60
+tolerence = 15
  
 # Global Variables
 initenL = 0
@@ -34,8 +34,10 @@ enR = 0
 prox_sensors=[]
 prox_readings=[0,0,0,0,0,0,0,0]
 
-camera = robot.getDevice("camera")
-camera.enable(tstep)
+cameraR = robot.getDevice("cameraR")
+cameraR.enable(tstep)
+cameraL = robot.getDevice("cameraL")
+cameraL.enable(tstep)
 
 # Helper Functions
 def initializeSensors():
@@ -45,10 +47,10 @@ def initializeSensors():
         prox_sensors.append(robot.getDevice(sensor))
         prox_sensors[ind].enable(tstep)
 #camera functions
-def use_camera():
-    image =camera.getImage()
-    width = camera.getWidth()
-    height = camera.getHeight()
+def use_camera(cam):
+    image =cam.getImage()
+    width = cam.getWidth()
+    height = cam.getHeight()
 
     image_array = np.frombuffer(image,dtype=np.uint8).reshape((height,width,4))
     img_bgr = cv2.cvtColor(image_array,cv2.COLOR_RGB2BGR)
@@ -118,7 +120,7 @@ def gotoStart():
 def mazeTravelRightwall():
     gotoStart()
     while robot.step(tstep)!=-1:
-        img_resize,mask = use_camera()
+        img_resize,mask = use_camera(cameraR)
         if np.any(mask) and prox_readings[0]>80:###############################
             stop()
             print("{} found".format(colors[0]))
@@ -128,7 +130,7 @@ def mazeTravelRightwall():
             if len(colors)==0:
                 break 
         print(colors)
-        cv2.imshow("camera",img_resize)
+        cv2.imshow("cameraR",img_resize)
         cv2.waitKey(1)
         readSensors()
         print(prox_readings[0],prox_readings[2])
@@ -150,6 +152,18 @@ def mazeTravelRightwall():
 def mazeTravelLeftwall():
     gotoStart()
     while robot.step(tstep)!=-1:
+        img_resize,mask = use_camera(cameraL)
+        if np.any(mask) and prox_readings[0]>80:###############################
+            stop()
+            print("{} found".format(colors[0]))
+            sleep(3)
+            colors.pop(0)
+            color_order.pop(0)
+            if len(colors)==0:
+                break 
+        print(colors)
+        cv2.imshow("cameraL",img_resize)
+        cv2.waitKey(1)
         readSensors()
         print(prox_readings[7],prox_readings[5])
         if prox_readings[7]>80: #wall in front
@@ -179,12 +193,9 @@ if __name__ == "__main__":
 
     # Set motors to velocity control mode
     left_motor.setPosition(float('inf'))  
-    right_motor.setPosition(float('inf')) 
-    
+    right_motor.setPosition(float('inf'))  
     left_motor.setVelocity(0)  
     right_motor.setVelocity(0) 
-    
     initializeSensors()
-   
-    mazeTravelRightwall()
+    mazeTravelLeftwall()
         

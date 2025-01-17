@@ -3,7 +3,7 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "../protos/E-puck.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Roughcast.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
@@ -11,8 +11,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.4293880439658648 0.6426569593084455 0.6345218202328362 1.823425404515922
-  position 0.6197102422943935 0.22993298263661624 0.9215211520815039
+  orientation 0.667295639884279 0.13567920523686844 -0.7323303095309672 2.703173681720063
+  position 0.24757967112707036 0.3203650633989669 1.051029551384386
 }
 TexturedBackground {
 }
@@ -254,12 +254,8 @@ Wall {
   size 0.01 1.25 0.1
 }
 E-puck {
-  hidden position_0_0 19691.84968720729
-  hidden position_0_1 22348.997162132066
-  hidden rotation_1 0 1 0 0.3469345064660982
-  hidden rotation_2 0 1 0 5.990209801456056
-  translation 0.702278 0.25305 0.00019015
-  rotation 0.0007805252482861278 -0.0008686642763232707 -0.9999993181011235 -1.5160553071795864
+  translation 0.199757 0.216675 0.0061893
+  rotation -0.022630898632357576 -0.013705499171742033 -0.9996499395886268 1.66315
   controller "my_controller_wallfollower"
 }
 Wall {
@@ -275,8 +271,7 @@ Wall {
   }
 }
 Wall {
-  translation 0.95 -0.24 0
-  rotation 0 0 1 1.5707996938995747
+  translation 0.99 -0.195 0
   name "brown"
   size 0.01 0.1 0.1
   appearance Roughcast {
