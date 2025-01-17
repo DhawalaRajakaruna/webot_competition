@@ -6,12 +6,13 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "../protos/E-puck.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Roughcast.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.0541285619357942 0.9965789886968993 -0.06245332713817899 1.6355729813958662
-  position 1.1778809801237176 -0.619671114887701 2.24495910778531
+  orientation 0.667295639884279 0.13567920523686844 -0.7323303095309672 2.703173681720063
+  position 0.24757967112707036 0.3203650633989669 1.051029551384386
 }
 TexturedBackground {
 }
@@ -19,24 +20,14 @@ TexturedBackgroundLight {
 }
 RectangleArena {
   floorSize 2.5 2.5
+  floorAppearance Parquetry {
+    colorOverride 0.8 0.6 0.6
+  }
 }
-E-puck {
-  hidden position_0_0 344.83537704403795
-  hidden position_0_1 231.64150595123738
-  hidden linearVelocity_0 -0.002919858113159819 0.01879884315781991 2.8637767835489445e-05
-  hidden angularVelocity_0 0.000391172483066198 0.0015834997860800651 -0.13781543445927738
-  hidden translation_1 0 0.02599999999999935 0.02
-  hidden rotation_1 0 0.9999999999999999 0 5.543370456340285
-  hidden linearVelocity_1 -0.0032924406546722008 0.023059183677473033 -3.805409906605734e-05
-  hidden angularVelocity_1 -6.193682357945509 -1.0333939213306451 -0.17375898315753843
-  hidden translation_2 0 -0.025999999999999936 0.02
-  hidden rotation_2 0 0.9999999999999999 0 5.446834892772264
-  hidden linearVelocity_2 -0.002643543325496928 0.015138109368998665 -6.853682883267776e-06
-  hidden angularVelocity_2 -0.7736108595367143 -0.12934899696748461 -0.1400490355780853
-  translation 0.9293887002987239 0.49071684443132496 -0.00010348897508380243
-  rotation -0.0007507041478086151 -0.0008524161573039192 0.9999993549147805 1.7322893277910443
-  name "e-puck(1)"
-  controller "my_controller"
+PointLight {
+  attenuation 0 0 1
+  intensity 0.98
+  location 0.6 0.34 0.4
 }
 Wall {
   translation -1 1.125 0
@@ -262,9 +253,14 @@ Wall {
   name "5(1)"
   size 0.01 1.25 0.1
 }
+E-puck {
+  translation 0.199757 0.216675 0.0061893
+  rotation -0.022630898632357576 -0.013705499171742033 -0.9996499395886268 1.66315
+  controller "my_controller_wallfollower"
+}
 Wall {
-  translation -1.125 -0.495 0
-  rotation 0 0 1 1.5707996938995747
+  translation -1.125 -0.49 0
+  rotation 0 0 1 1.5708003061004252
   name "green"
   size 0.01 0.1 0.1
   appearance Roughcast {
@@ -275,7 +271,18 @@ Wall {
   }
 }
 Wall {
-  translation 0.055 -1.25 0
+  translation 0.99 -0.195 0
+  name "brown"
+  size 0.01 0.1 0.1
+  appearance Roughcast {
+    colorOverride 0.647 0.412 0.118
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+Wall {
+  translation 0.05 -1.246 0
   rotation 0 0 1 1.5707996938995747
   name "yellow"
   size 0.01 0.1 0.1
@@ -287,36 +294,24 @@ Wall {
   }
 }
 Wall {
-  translation 0.95 -0.255 0
-  rotation 0 0 1 1.5707996938995747
-  name "brown"
-  size 0.01 0.1 0.1
-  appearance Roughcast {
-    colorOverride 0.647059 0.411765 0.117647
-    textureTransform TextureTransform {
-      scale 2.4 1
-    }
-  }
-}
-Wall {
-  translation 0.55 -0.49 0
-  rotation 0 0 1 1.5707996938995747
-  name "pink"
-  size 0.01 0.1 0.1
-  appearance Roughcast {
-    colorOverride 1 0 1
-    textureTransform TextureTransform {
-      scale 2.4 1
-    }
-  }
-}
-Wall {
-  translation 0.7 0.495 0
+  translation 0.69 0.49 0
   rotation 0 0 1 1.5707996938995747
   name "red"
   size 0.01 0.1 0.1
   appearance Roughcast {
     colorOverride 1 0 0
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+Wall {
+  translation 0.56 -0.49 0
+  rotation 0 0 1 1.5707996938995747
+  name "pink"
+  size 0.01 0.1 0.1
+  appearance Roughcast {
+    colorOverride 1 0 1
     textureTransform TextureTransform {
       scale 2.4 1
     }
