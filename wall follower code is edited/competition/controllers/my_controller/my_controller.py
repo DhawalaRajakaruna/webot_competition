@@ -175,10 +175,10 @@ def delay(time):
 def checkColor():
     global countcolordone,travelside
     print(countcolordone)
-    if countcolordone == 5:
-        while robot.step(tstep)!=-1:
-            print("The End !")
-            print(colorArray)
+    # if countcolordone == 5:
+        # while robot.step(tstep)!=-1:
+            # print("The End !")
+            # print(colorArray)
     colorPicked=colorPicked=getColor(robot, "camera")
     if colorPicked == 'none':
         return
@@ -189,6 +189,10 @@ def checkColor():
                 if colorPicked == colorOrder[countcolordone]:
                     stop()
                     delay(4)
+                    if countcolordone == 4:
+                        while robot.step(tstep)!=-1:
+                            print("The End !")
+                            print(colorArray)
                     countcolordone=countcolordone+1
                     if colorOrder[countcolordone] in colorArray[:-1]:
                         mazeTravelLeftwall()
@@ -208,6 +212,10 @@ def checkColor():
             elif colorPicked == colorArray[-1] and colorPicked == colorOrder[countcolordone]:
                 stop()
                 delay(4)
+                if countcolordone == 4:
+                    while robot.step(tstep)!=-1:
+                        print("The End !")
+                        print(colorArray)
                 countcolordone=countcolordone+1
                 if colorOrder[countcolordone] in colorArray[:-1]:
                     return
