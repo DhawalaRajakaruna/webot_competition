@@ -25,6 +25,7 @@ colors = ["red","yellow","pink","brown","green"]
 tolerence = 15
  
 # Global Variables
+wallFlag=True
 initenL = 0
 initenR = 0
 lasterror = 0
@@ -55,7 +56,7 @@ def use_camera(cam):
     image_array = np.frombuffer(image,dtype=np.uint8).reshape((height,width,4))
     img_bgr = cv2.cvtColor(image_array,cv2.COLOR_RGB2BGR)
     img_rgb = image_array[:,:,:3]
-    print(img_rgb)
+    #print(img_rgb)
     target_color = color_order[0]
     lower_bound = np.clip(target_color-tolerence,0,255)
     upper_bound = np.clip(target_color+tolerence,0,255)
@@ -118,67 +119,63 @@ def gotoStart():
 
 
 def mazeTravelRightwall():
-    gotoStart()
-    while robot.step(tstep)!=-1:
-        img_resize,mask = use_camera(cameraR)
-        if np.any(mask) and prox_readings[0]>80:###############################
-            stop()
-            print("{} found".format(colors[0]))
-            sleep(3)
-            colors.pop(0)
-            color_order.pop(0)
-            if len(colors)==0:
-                break 
-        print(colors)
-        cv2.imshow("cameraR",img_resize)
-        cv2.waitKey(1)
-        readSensors()
-        print(prox_readings[0],prox_readings[2])
-        if prox_readings[0]>80: #wall in front
-            #print("Front Wall. Rotate Left")
-            rotateLeft()   #immeadiate turn
+    img_resize,mask = use_camera(cameraR)
+    if np.any(mask):###############################
+        stop()
+        print("{} found".format(colors[0]))
+        sleep(3)
+        colors.pop(0)
+        color_order.pop(0)
+        if len(colors)==0:
+            break 
+    print(colors)
+    cv2.imshow("cameraR",img_resize)
+    cv2.waitKey(1)
+    readSensors()
+    print(prox_readings[0],prox_readings[2])
+    if prox_readings[0]>80: #wall in front
+        #print("Front Wall. Rotate Left")
+        rotateLeft()   #immeadiate turn
+    else:
+        if prox_readings[1]>80:
+            #print("After a Right Turn")
+            turnLeft()
+        elif prox_readings[2]>80: #wall on right
+            #print("Wall on Right. Move Forward")
+            moveForward()
         else:
-            if prox_readings[1]>80:
-                #print("After a Right Turn")
-                turnLeft()
-            elif prox_readings[2]>80: #wall on right
-                #print("Wall on Right. Move Forward")
-                moveForward()
-            else:
-                #print("No wall. Turn Right")
-                turnRight()
-           
+            #print("No wall. Turn Right")
+            turnRight()
+       
 
-def mazeTravelLeftwall():
-    gotoStart()
-    while robot.step(tstep)!=-1:
-        img_resize,mask = use_camera(cameraL)
-        if np.any(mask) and prox_readings[0]>80:###############################
-            stop()
-            print("{} found".format(colors[0]))
-            sleep(3)
-            colors.pop(0)
-            color_order.pop(0)
-            if len(colors)==0:
-                break 
-        print(colors)
-        cv2.imshow("cameraL",img_resize)
-        cv2.waitKey(1)
-        readSensors()
-        print(prox_readings[7],prox_readings[5])
-        if prox_readings[7]>80: #wall in front
-            print("Front Wall. Rotate Right")
-            rotateRight()   #immeadiate turn
+def mazeTravelLeftwall():    
+    img_resize,mask = use_camera(cameraL)
+    if np.any(mask) and prox_readings[0]>80:###############################
+        stop()
+        print("{} found".format(colors[0]))
+        sleep(3)
+        colors.pop(0)
+        color_order.pop(0)
+        if len(colors)==0:
+            break 
+    print(colors)
+    cv2.imshow("cameraL",img_resize)
+    cv2.waitKey(1)
+    readSensors()
+    print(prox_readings[7],prox_readings[5])
+    if prox_readings[7]>80: #wall in front
+        print("Front Wall. Rotate Right")
+        rotateRight()   #immeadiate turn
+    else:
+        if prox_readings[6]>80:
+            print("After a Left Turn")
+            turnRight()
+        elif prox_readings[5]>80: #wall on left
+            print("Wall on left. Move Forward")
+            moveForward()
         else:
-            if prox_readings[6]>80:
-                print("After a Left Turn")
-                turnRight()
-            elif prox_readings[5]>80: #wall on left
-                print("Wall on left. Move Forward")
-                moveForward()
-            else:
-                print("No wall. Turn Left")
-                turnLeft()
+            print("No wall. Turn Left")
+            turnLeft()
 
 
 # Main Execution
@@ -197,5 +194,10 @@ if __name__ == "__main__":
     left_motor.setVelocity(0)  
     right_motor.setVelocity(0) 
     initializeSensors()
-    mazeTravelLeftwall()
+    gotoStart()
+    while robot.step(tstep)!=-1:
+        if wallFlag:
+            mazeTravelLeftwall()
+        else:
+            mazeTravelRightwall()
         
