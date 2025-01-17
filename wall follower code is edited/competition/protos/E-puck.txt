@@ -711,6 +711,19 @@ Robot {
       name "ps7"
       numberOfRays IS distance_sensor_numberOfRays
     }
+    # Add new proximity sensors for the back
+ #   DEF EPUCK_PS8 E-puckDistanceSensor {
+ #     translation -0.03 -0.01 0.033
+ #     rotation 0.978028 0.147411 0.147416 1.593022
+ #     name "ps8"
+ #     numberOfRays IS distance_sensor_numberOfRays
+ #   }
+ #   DEF EPUCK_PS9 E-puckDistanceSensor {
+ #     translation -0.021 -0.026 0.033
+ #     rotation 0 0 1 -2.2500
+ #     name "ps9"
+ #     numberOfRays IS distance_sensor_numberOfRays
+ #   }
     DEF EPUCK_LS0 LightSensor {
       translation 0.03 -0.01 0.0329
       rotation -0.977797 0.14818 0.148178 -1.593259
@@ -823,8 +836,8 @@ Robot {
       }
     %< } >%
     DEF EPUCK_CAMERA Camera {
-      translation 0 0 0.0525
-      rotation 0 0 1 -1.5708 
+      translation 0 -0.033 0.039
+      rotation 0 0.15 1 -1.57
       children [
         Pose {
           rotation 0 0.707107 0.707107 3.14159

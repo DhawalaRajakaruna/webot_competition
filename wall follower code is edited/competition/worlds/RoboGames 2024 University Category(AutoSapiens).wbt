@@ -3,16 +3,16 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
-EXTERNPROTO "../protos/E-puck.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Roughcast.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "../protos/E-puck.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.12198381523452417 -0.8981429846450403 0.42244423058402436 5.572633650506851
-  position -0.8962266367633633 -0.6569507768848039 0.7661800961552527
+  orientation 0.34441624044673474 -0.7400719211107838 -0.577642627322405 4.963231211827994
+  position -2.0878434719453343 -2.9671100581567944 6.678047472632095
 }
 TexturedBackground {
 }
@@ -21,26 +21,14 @@ TexturedBackgroundLight {
 RectangleArena {
   floorSize 2.5 2.5
   floorAppearance Parquetry {
-    type "light strip"
+    type "dark strip"
+    colorOverride 0 0 0
   }
 }
 E-puck {
-  hidden position_0_0 1034.81630590489
-  hidden position_0_1 370.81175845050683
-  hidden linearVelocity_0 -1.0902403774909643e-09 -5.916290141611934e-10 -3.0436994025587575e-05
-  hidden angularVelocity_0 3.841593275534841e-08 -7.446112965232199e-08 -1.2875562592113542e-05
-  hidden rotation_1 0 -1 0 4.1898150140790555
-  hidden linearVelocity_1 -0.0003884655819963367 -0.0010178751421868182 6.836515519155687e-05
-  hidden angularVelocity_1 5.57840448229296 2.8844503358455955 -0.037892276910809757
-  hidden rotation_2 0 1 0 4.215167898857132
-  hidden linearVelocity_2 0.0003884626915302878 0.0010178735346413165 6.836091796718447e-05
-  hidden angularVelocity_2 -5.578404405020893 -2.88445048484505 -0.037892342479525845
-  translation 0.184859200471977 -1.178242284756424 -0.000152228306056712
-  rotation -6.084520215295975e-09 3.7047657883501695e-09 1 -1.0910623631763245
-  name "e-puck(1)"
+  translation -0.7035197260921435 -0.5212987248811628 -0.0004442884199473956
+  rotation 0.0068715021994368245 0.00605922721836537 -0.999958033230915 1.6410953579678689
   controller "my_controller"
-  camera_width 160
-  camera_height 120
 }
 Wall {
   translation -1 1.125 0
@@ -267,8 +255,8 @@ Wall {
   size 0.01 1.25 0.1
 }
 Wall {
-  translation 0.495 -0.194998 0
-  rotation 0 0 -1 -5.307179586466759e-06
+  translation -1.115 -0.495004 0
+  rotation 0 0 1 1.5708
   name "green"
   size 0.01 0.1 0.1
   appearance Roughcast {
@@ -279,8 +267,8 @@ Wall {
   }
 }
 Wall {
-  translation 0.055 -1.25 0
-  rotation 0 0 1 1.5707996938995747
+  translation 0.054999 -1.25 0
+  rotation 0 0 -1 1.57079
   name "yellow"
   size 0.01 0.1 0.1
   appearance Roughcast {
@@ -291,8 +279,8 @@ Wall {
   }
 }
 Wall {
-  translation 0.24 -0.445 0
-  rotation 0 0 -1 -5.307179586466759e-06
+  translation 0.94 -0.245 0
+  rotation 0 0 1 -1.5707953071795862
   name "brown"
   size 0.01 0.1 0.1
   appearance Roughcast {
@@ -303,8 +291,8 @@ Wall {
   }
 }
 Wall {
-  translation -0.26 -0.45 0
-  rotation 0 0 1 1.01503e-06
+  translation 0.56 -0.49 0
+  rotation 0 0 1 1.5708
   name "pink"
   size 0.01 0.1 0.1
   appearance Roughcast {
@@ -315,7 +303,7 @@ Wall {
   }
 }
 Wall {
-  translation -0.2 -0.485 0
+  translation 0.699998 0.495002 0
   rotation 0 0 -1 1.57079
   name "red"
   size 0.01 0.1 0.1
@@ -325,4 +313,8 @@ Wall {
       scale 2.4 1
     }
   }
+}
+PointLight {
+  attenuation 0 0 1
+  location 0.5 0 0
 }
