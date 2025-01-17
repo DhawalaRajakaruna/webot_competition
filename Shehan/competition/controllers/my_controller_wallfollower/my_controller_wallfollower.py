@@ -126,8 +126,7 @@ def mazeTravelRightwall():
         sleep(3)
         colors.pop(0)
         color_order.pop(0)
-        if len(colors)==0:
-            break 
+ 
     print(colors)
     cv2.imshow("cameraR",img_resize)
     cv2.waitKey(1)
@@ -156,8 +155,7 @@ def mazeTravelLeftwall():
         sleep(3)
         colors.pop(0)
         color_order.pop(0)
-        if len(colors)==0:
-            break 
+
     print(colors)
     cv2.imshow("cameraL",img_resize)
     cv2.waitKey(1)
