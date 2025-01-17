@@ -115,17 +115,36 @@ def readSensors():
     for _ in range(8):
         prox_readings[_]=prox_sensors[_].getValue()
     
-def gotoStart():
-    readSensors()
-    if prox_readings[2]>90:
-        return
-    while prox_readings[0]<90 and robot.step(tstep)!=-1:
-        moveForward()
+def gotoStart_R():
+    while robot.step(tstep)!=-1:
         readSensors()
+        moveForward()
+        if prox_readings[0]>80:
+            stop()
+            while robot.step(tstep)!=-1:
+                readSensors()
+                rotateRight()
+                if prox_readings[2]<80:
+                    break
+            break
+
+
+def gotoStart_L():  
+    while robot.step(tstep)!=-1:
+        readSensors()
+        moveForward()
+        if prox_readings[7]>80:
+            stop()
+            while robot.step(tstep)!=-1:
+                readSensors()
+                rotateLeft()
+                if prox_readings[5]<80:
+                    break
+            break
 
 def solve_maze():
     global missing_color
-    gotoStart()
+    gotoStart_R()
     while robot.step(tstep)!=-1:
         img_resize,mask,mask2 = use_camera()
         if np.any(mask) and prox_readings[0]>80:#detect curunt color withing 80 range
@@ -142,6 +161,7 @@ def solve_maze():
             if np.any(mask2) and prox_readings[0]>80: #detect next color within 80 range
                 missing_color = True #if a color is missed 
                 stop()
+                gotoStart_L()
                 print("{} found with missing {}".format(colors[1],colors[0]))
         print(colors)
         cv2.imshow("camera",img_resize)

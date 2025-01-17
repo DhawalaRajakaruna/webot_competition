@@ -3,16 +3,15 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "../protos/E-puck.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Roughcast.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.4293880439658648 0.6426569593084455 0.6345218202328362 1.823425404515922
-  position 0.6197102422943935 0.22993298263661624 0.9215211520815039
+  orientation 0.5559520593300852 -0.47181208610698055 -0.6843322753823736 4.031822089419813
+  position 1.1859528645318833 -1.5773610448559956 5.50042624930142
 }
 TexturedBackground {
 }
@@ -20,8 +19,20 @@ TexturedBackgroundLight {
 }
 RectangleArena {
   floorSize 2.5 2.5
-  floorAppearance Parquetry {
-    colorOverride 0.8 0.6 0.6
+  floorAppearance PBRAppearance {
+    baseColor 0.9 0.7 0.6
+    roughness 1
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/parquetry/chequered_parquetry_normal.jpg"
+      ]
+    }
+    occlusionMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/parquetry/chequered_parquetry_occlusion.jpg"
+      ]
+    }
   }
 }
 PointLight {
@@ -254,13 +265,9 @@ Wall {
   size 0.01 1.25 0.1
 }
 E-puck {
-  hidden position_0_0 19691.84968720729
-  hidden position_0_1 22348.997162132066
-  hidden rotation_1 0 1 0 0.3469345064660982
-  hidden rotation_2 0 1 0 5.990209801456056
-  translation 0.702278 0.25305 0.00019015
-  rotation 0.0007805252482861278 -0.0008686642763232707 -0.9999993181011235 -1.5160553071795864
-  controller "my_controller_wallfollower"
+  translation 0.341765 0.114765 -6.3962e-05
+  rotation -2.64209e-10 3.52199e-09 -1 -0.15203530717958635
+  controller "my_controller_wallfollowing_new"
 }
 Wall {
   translation -1.125 -0.49 0
