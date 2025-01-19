@@ -22,7 +22,7 @@ errorsum = 0
 enL = 0
 enR = 0
 prox_sensors=[]
-prox_readings=[0,0,0,0,0,0,0,0]
+prox_readings=[0,0,0,0,0]
 colorArray=[]
 #Red - Yellow - Pink - Brown - Green
 colorOrder=["Red","Yellow","Pink","Brown","Green"]
@@ -33,7 +33,7 @@ prevtravel=0
 
 # Helper Functions
 def initializeSensors():    
-    for ind in range(8):
+    for ind in range(5):
         sensor='ps'+str(ind)
         prox_sensors.append(robot.getDevice(sensor))
         prox_sensors[ind].enable(tstep)
@@ -81,6 +81,7 @@ def turnBack():
         right_motor.setVelocity(base_angular_V)       
     delay(4.5)
     stop()
+    
 def rotateLeft():
     left_motor.setVelocity(-base_angular_V)
     right_motor.setVelocity(base_angular_V)
@@ -98,7 +99,7 @@ def rotateLeftbackward():
     right_motor.setVelocity(-base_angular_V)         
   
 def readSensors():
-    for _ in range(8):
+    for _ in range(5):
         prox_readings[_]=prox_sensors[_].getValue()
     
 def gotoStartRight():
@@ -154,14 +155,14 @@ def mazeTravelLeftwall():
         checkColor()
         print(colorArray)
         #print(prox_readings[7],prox_readings[5])
-        if prox_readings[3]>80: #wall in front
+        if prox_readings[4]>80: #wall in front
             #print("Front Wall. Rotate Right")
             rotateLeftbackward()   #immeadiate turn
         else:
-            if prox_readings[2]>80:
+            if prox_readings[3]>80:
                 #print("After a Left Turn")
-                # turnLeftBackward()
-            # elif prox_readings[2]>80: #wall on left
+                turnLeftBackward()
+            elif prox_readings[2]>80: #wall on left
                 #print("Wall on left. Move Forward")
                 moveBackward()
             else:
