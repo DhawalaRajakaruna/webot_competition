@@ -24,6 +24,9 @@ The ePuck robot detects and waits in front of colors in the following sequence:
 
 The task takes some time to complete as the robot methodically navigates through the maze.
 
+In the **Finalized Doc** contains the submitted Code,Arena,and theRobot which we have submitted for the competition.
+The rest of the documents are just used for different testings with webots.
+
 ## 🎥 Video Submission  
 Watch our submission video here: [Click to Watch](https://drive.google.com/file/d/1JcqRvCOuwSDfMf7IbTN3LIEPfDrm5-Be/view?usp=sharing)  
 
